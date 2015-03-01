@@ -4,6 +4,11 @@ class RegistrationsController < ApplicationController
     erb :register
   end
 
+  post '/new' do
+    @email = params[:email]
+    erb :new_user
+  end
+
   # Registration!
   # You'll need a way to send the registration form here.
   # Use your battle-hardened text editor to create the
@@ -42,6 +47,9 @@ class RegistrationsController < ApplicationController
     # TODO: you'll need a way for your registration to set a value that
     # will make this true when your /new looks at it.
     false
+    if !session[:email].nil? && !session[:name].nil?
+      true
+    end
   end
 
 end
